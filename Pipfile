@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 python3-nmap = "*"
+rich = "*"
 
 [dev-packages]
 

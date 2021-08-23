@@ -17,14 +17,28 @@
 <ul>exploitDB</ul>
 <ul>available tools & usage</ul>
 
+indicators
+
+... : loading
+
+[+] : success
+
+[-] : error
+
+[!] : warning
+
+[i] : info
+
 ---
 
-### **[Tree]**
+### Save Point
 
-src
+#### Implement
 
-<l>1</l>
+- check-is_root, get_host
+- 
 
-<l>2</l>
+study awesome library `rich` for pretty console.
+
 
 ---
