@@ -1,16 +1,16 @@
 # Web-Scanner-Python
 
-###**[Modules]**
+### **[Modules]**
 
-####root identification
+#### root identification
 
-####argparse
+#### argparse
 
-####scan
+#### scan
 <ul>network</ul>
 <ul>ports</ul>
 
-####print
+#### print
 <ul>logo & usage</ul>
 <ul>loading icon(ft.thread)</ul>
 <ul>vulns</ul>
@@ -19,7 +19,7 @@
 
 ---
 
-###**[Tree]**
+### **[Tree]**
 
 src
 
