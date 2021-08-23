@@ -9,11 +9,11 @@ def is_root():
     return True
 
 
-def get_host():
+def get_localhost():
     try:
         with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s:
             s.connect(("8.8.8.8", 80))
-            res = s.getsockname()[2]
+            res = s.getsockname()[0]
     except Exception as e:
         print("[-]Error: " + str(e))
         res = False
