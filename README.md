@@ -31,14 +31,16 @@ indicators
 
 ---
 
-### Save Point
+### Work Save Point
 
 #### Implement
 
-- check-is_root, get_host
-- 
+- check.is_root, get_localhost
 
-study awesome library `rich` for pretty console.
+study argparser and implement. then,
 
+study awesome library `rich` for pretty console. then,
+
+study nmap and implement.
 
 ---
