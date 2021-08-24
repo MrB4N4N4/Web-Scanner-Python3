@@ -35,9 +35,7 @@ indicators
 
 #### Implement
 
-- check.is_root, get_localhost
-
-study argparser and implement. then,
+- check.is_root, get_localhost, argparser
 
 study awesome library `rich` for pretty console. then,
 
