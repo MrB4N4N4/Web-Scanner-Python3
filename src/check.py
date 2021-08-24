@@ -5,6 +5,7 @@ import sys
 
 def is_root():
     if os.geteuid() != 0:
+        print("Are you Root?")
         return False
     return True
 
@@ -18,3 +19,4 @@ def get_localhost():
         print("[-]Error: " + str(e))
         res = False
     return res
+

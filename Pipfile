@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 python3-nmap = "*"
 rich = "*"
+pyfiglet = "*"
 
 [dev-packages]
 

@@ -1,12 +1,8 @@
 import argparse
 
-des = [
-    "example: webscanner -sN 127.0.0.1 --open",
-
-]
-parser = argparse.ArgumentParser(description="example: webscanner -sN 127.0.0.1 --open\n")
-parser.add_argument("-sN", "--scanNetwork", help="scan ip address", action="store_true")
-
-args = parser.parse_args()
-
-print(args)
+parser = argparse.ArgumentParser(description="you can use localhost as 127.0.0.1",
+                                 usage="scanner -sN 127.0.0.1 | scanner -sP 127.0.0.30")
+parser.add_argument("-sN", "--scanNetwork", metavar="",
+                    help="scan Network. Put host's bandwidth")
+parser.add_argument("-sP", "--scanPort", metavar="",
+                    help="scan opened ports of Host. Put host's address")
