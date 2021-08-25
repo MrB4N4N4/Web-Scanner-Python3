@@ -35,10 +35,12 @@ indicators
 
 #### Implement
 
-- check.is_root, get_localhost, argparser
+- check.is_root, get_localhost, argparser, Nmap
+
+#### To Do
+
+print Nmap results, add rich loading icon.
 
 study awesome library `rich` for pretty console. then,
-
-study nmap and implement.
 
 ---
