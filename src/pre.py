@@ -35,9 +35,9 @@ def check_address(address, tmp=""):
     try:
         tmp = address.split(".")
         if len(tmp) != 4:
-            print("[-] You should put ip address using ipv4 protocol")
+            print("[!] You should put ip address using ipv4 protocol")
             exit()
     except AttributeError as e:
-        print("[-] You should put ip address using ipv4 protocol")
+        print("[!] You should put ip address using ipv4 protocol")
         exit()
     return address
