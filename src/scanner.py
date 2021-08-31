@@ -27,8 +27,12 @@ cnt = len(sys.argv)
 if cnt < 3:
     banner = pyfiglet.figlet_format("Web-Scanner")
     print(banner)
-    print("[Guide]\nThis program is a simple scanner for network, ports.\n\'nmap\' is required")
+    print("[Guide]\nThis program is a simple scanner for network, ports\n"
+          "\'nmap\' is required and you should be root")
     print(parser.format_help())
     exit()
 
-process.process_scan(args)
+scan_info = process.process_scan(args)
+
+for dic in scan_info:
+    process.dic_to_chart(dic)

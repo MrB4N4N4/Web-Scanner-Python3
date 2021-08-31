@@ -24,20 +24,29 @@ def get_localhost():
 def nmap_exist():
     if "nmap" in os.popen("dpkg -l | grep nmap").read():
         return True
-    print("[!] You should install nmap first.\n   sudo apt-get install nmap")
+    print("❗You should install nmap first.\n   sudo apt-get install nmap")
     return False
 
 
-# make address separated by dots.
+# chek address
 def check_address(address, tmp=""):
+    if address is None:
+        return
+
     if address in ["localhost", "127.0.0.1"]:
         address = get_localhost()
     try:
         tmp = address.split(".")
         if len(tmp) != 4:
-            print("[!] You should put ip address using ipv4 protocol")
+            print("❗You should input four integers with \".\"")
             exit()
+        else:
+            for e in tmp:
+                if int(e) < 0 or int() > 255:
+                    print("❗Integers must be 0 ~ 255")
+                    exit()
     except AttributeError as e:
-        print("[!] You should put ip address using ipv4 protocol")
+        raise e
+        print("❗Unable to split address with \".\"")
         exit()
     return address
