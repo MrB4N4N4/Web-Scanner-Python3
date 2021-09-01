@@ -3,7 +3,7 @@ import nmap3
 from rich import print
 from rich.table import Table
 from rich.console import Console
-from time import sleep
+from rich.markdown import Markdown
 
 console = Console()
 
@@ -22,7 +22,7 @@ def process_scan(arguments):
     return info
 
 
-def scan_network(address: str):
+def scan_network(address):
     address = address.split(".")[:3]
     address.append("1/24")
     address = ".".join(address)
@@ -34,7 +34,7 @@ def scan_network(address: str):
     return result
 
 
-def scan_service(address: str):
+def scan_service(address):
     nmap = nmap3.Nmap()
     with console.status("[bold green]Please wait...") as status:
         console.log(f"start scanning {address} services\n")
@@ -43,7 +43,7 @@ def scan_service(address: str):
     return result
 
 
-def show_os_info(address: str):
+def show_os_info(address):
     nmap = nmap3.Nmap()
     with console.status("[bold green]Please wait...") as status:
         console.log(f"getting information of [bold]Operating [bold]System\n")
@@ -52,15 +52,58 @@ def show_os_info(address: str):
     return result
 
 
-def dic_to_chart(info: dict[str]):
-    # get ip address from nmap result
-    print(info)
+def net_to_table(info):
+    table = Table(show_header=True, header_style="bold magenta")
+    table.add_column("IP", width=15)
+    table.add_column("Vendor", style="bold red")
+
     hosts = info.keys()
-    data = dict()
+    # Extract information of nmap scan result
     for ip in hosts:
-        print(info[ip])
+        if ip in ["stats", "runtime"]:
+            continue
+        try:
+            table.add_row(ip,
+                          info[ip]["macaddress"]["vendor"])
+        except Exception as e:
+            pass
+
+    console.print("🔽[bold yellow] Network scan result!")
+    console.print(table)
 
 
+def port_to_table(info):
+    """ Port scan result!!
+    ip :
+    os :
+    columns : protocol, port, name, product, version"""
+    table = Table(show_header=True, header_style="bold magenta")
+    table.add_column("Protocol")
+    table.add_column("Port Number")
+    table.add_column("Name")
+    table.add_column("Product")
+    table.add_column("Version")
 
+    os_info, service_info = info[0], info[1]
+    ip = list(os_info.keys())[0]
 
+    os_info = os_info[ip]["osmatch"][0]
+    service_info = service_info[ip]["ports"]
 
+    # get os
+    print("🔽[bold yellow] Port scan result!")
+    print("IP: [bold]", ip)
+    print("OS: [white]",
+          os_info["name"], "| osfamily: ",
+          os_info["osclass"]["osfamily"])
+    # port scan proto, port num, name, product, version
+    for port in service_info:
+        try:
+            table.add_row(port["protocol"],
+                          port["portid"],
+                          port["service"]["name"],
+                          port["service"]["product"],
+                          port["service"]["version"])
+        except Exception as e:
+            pass
+    console.print(table)

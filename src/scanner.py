@@ -34,5 +34,7 @@ if cnt < 3:
 
 scan_info = process.process_scan(args)
 
-for dic in scan_info:
-    process.dic_to_chart(dic)
+if len(scan_info) == 1:
+    process.net_to_table(scan_info[0])
+else:
+    process.port_to_table(scan_info)
